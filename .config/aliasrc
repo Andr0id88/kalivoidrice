@@ -1,0 +1,113 @@
+#!/bin/sh
+
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				      #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
+#		   \/    \/              \/\/           \/            #
+#                                                                     #
+#######################################################################
+
+
+#######################################################################
+#                                Alias                                #
+#######################################################################
+alias ka="killall" \
+	mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
+	magit="nvim -c Magit" \
+	p="sudo pacman" \
+	SS="sudo systemctl" \
+	f="vifm" \
+	g="git" \
+	trem="transmission-remote" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	x="sxiv -ft *" \
+	sdn="sudo shutdown -h now" \
+	gua="git remote | xargs -L1 git push --all" \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+	yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'" \
+	yta="yt -x -f bestaudio/best" \
+	YT="youtube-viewer" \
+	ref="shortcuts >/dev/null; source ~/.shortcuts" \
+	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
+	lsp="pacman -Qett --color=always | less" \
+	gallery="python /usr/lib/python3.7/site-packages/gallery_get.py" \
+	reddit_gallery="python /usr/lib/python3.7/site-packages/reddit_get.py" \
+	perm='stat -c "%a %n" *' \
+	webserver="python -m http.server 8080" \
+	starwars="telnet towel.blinkenlights.nl" \
+	dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
+	gs="git status"\
+	ga="git add ." \
+	gc="git commit -m" \
+	gp="git push" \
+	ds="dotfiles status" \
+	da="dotfiles add" \
+	dc="dotfiles commit -m" \
+	dp="dotfiles push" \
+	du="du -d1 -h" #max depth, human readable
+
+#######################################################################
+#                          Special keybinds                           #
+#######################################################################
+# Bang! Previous Command Hotkeys
+# print previous command but only the first nth arguments
+# Alt+1, Alt+2 ...etc
+# http://www.softpanorama.org/Scripting/Shellorama/bash_command_history_reuse.shtml#Bang_commands
+bind '"\e1": "!:0 \n"'
+bind '"\e2": "!:0-1 \n"'
+bind '"\e3": "!:0-2 \n"'
+bind '"\e4": "!:0-3 \n"'
+bind '"\e5": "!:0-4 \n"'
+bind '"\e`": "!:0- \n"'     # all but the last word
+
+
+#######################################################################
+#                              Functions                              #
+#######################################################################
+#fh repeat bash history commands
+fh() {
+eval $(history | fzf +s | sed 's/ *[0-9]* *//')
+}
+bind '"\C-F":"fh\n"'	# fzf history ctrl + f hotkey
+
+#Looks for articles in sci-hub and downloades them.
+shdl() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
+
+#se is to search for scripts or config files, opens them up in default editor(nvim)
+se() { du -a ~/.scripts/* ~/.config/* | awk '{print $2}' | fzf | xargs  -r $EDITOR ;}
+
+sv() { vcopy "$(du -a ~/.scripts/* ~/.config/* | awk '{print $2}' | fzf)" ;}
+
+vf() { fzf | xargs -r -I % $EDITOR % ;}
+
+fp() { du -a ~/programmering/* | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+
+#fsr opens fzf in surfraw bookmark folder and opens the bookmark up in default browser
+fsr() { surfraw "$(cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sort -n | fzf -e)" ;}
+
+#fmv takes filename after command and opens fzf to search for output location
+fmv() { mv -v "$1" "$(awk '{print $2}' ~/.bmdirs | fzf | sed "s|~|$HOME|")" ;}
+
+#fcp takes filename after command and opens fzf to search for output location
+fcp() { cp -v "$1" "$(awk '{print $2}' ~/.bmdirs | fzf | sed "s|~|$HOME|")" ;}
+
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+#Search for songs on youtube, only play audio
+yl() { youtube-viewer -n $@ ;}
+
+rld-bashrc() { source ~/.bashrc ;} # Reload bashrc

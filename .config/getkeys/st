@@ -1,0 +1,20 @@
+       .__               .__             __                       .__              .__
+  _____|__| _____ ______ |  |   ____   _/  |_  ___________  _____ |__| ____ _____  |  |
+ /  ___/  |/     \\____ \|  | _/ __ \  \   __\/ __ \_  __ \/     \|  |/    \\__  \ |  |
+ \___ \|  |  Y Y  \  |_> >  |_\  ___/   |  | \  ___/|  | \/  Y Y  \  |   |  \/ __ \|  |__
+/____  >__|__|_|  /   __/|____/\___  >  |__|  \___  >__|  |__|_|  /__|___|  (____  /____/
+     \/         \/|__|             \/             \/            \/        \/     \/
+
+ST is the default terminal:
+	alt-shift-k - Zoom in
+	alt -shift-j - Zoom out
+	alt-home - default Zoom
+	alt-c copy text
+	alt-v paste text
+	alt-l - follow urls
+	alt-y - copy urls
+	alt-o - copy output of commands
+	alt-up\down - scroll up or down
+	shift+mousewheel - scroll up or down
+
+

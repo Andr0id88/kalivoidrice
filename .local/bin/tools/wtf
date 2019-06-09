@@ -1,0 +1,11 @@
+#!/bin/bash
+read -p "Enter the command you want an example of: " command
+
+if [ $command = "python" ]; then
+	read -p "What python syntax are you looking for?" pycommand
+	curl cheat.sh/$command/$pycommand
+
+else
+	curl cheat.sh/$command
+
+fi

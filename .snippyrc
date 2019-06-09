@@ -1,0 +1,4 @@
+[https] https://www
+[mail] 1988.hansen@gmail.com
+[vpn] sudo openvpn /etc/openvpn/ovpn_udp/uk936.nordvpn.com.udp.ovpn
+[stat] stat -c "%a %n"
