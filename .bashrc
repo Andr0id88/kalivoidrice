@@ -17,8 +17,8 @@ HISTIGNORE="&:ls:[bf]g:history:exit"  #ignore these commands from history
 #######################################################################
 #                     Load shortcuts and aliases                      #
 #######################################################################
-[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" # Load shortcut aliases
-[ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc" # Load aliases and functions
+[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc" # Load shortcut aliases
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc" # Load aliases and functions
 
 
 #######################################################################
