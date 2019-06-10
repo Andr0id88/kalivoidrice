@@ -52,6 +52,7 @@ Plug 'jiangmiao/auto-pairs'		" Automatically matches brackets
 Plug 'Shougo/deoplete.nvim'		" Autocompleter for vim
 Plug 'tpope/vim-repeat'			" Enables . to be used with vim-surround
 Plug 'easymotion/vim-easymotion'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 
