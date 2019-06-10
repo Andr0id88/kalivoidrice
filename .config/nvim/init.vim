@@ -33,7 +33,7 @@
 "                                  Plugged					"
 "			  -Minimalistic plugin manager				"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'		" Easy way to surround text with tags
 Plug 'scrooloose/nerdtree'		" File explorer within vim
 Plug 'junegunn/goyo.vim'		" Centers text on the screen
