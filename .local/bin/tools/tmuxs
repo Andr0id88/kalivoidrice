@@ -1,0 +1,36 @@
+#!/bin/sh
+
+#######################################################################
+#                                Author                               #
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				      #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
+#		   \/    \/              \/\/           \/            #
+#                                                                     #
+#######################################################################
+#                             Created:02/06/20                     #
+#######################################################################
+
+#Description:
+# Opens a prefixed Tmux session
+
+
+# Setup a session called "stuff" that has 2 windows.
+# The first window we'll call "text-to-file"
+# We want it putting dates into a text file
+tmux new-session -d -s stuff -n text-to-file -c 'ncmpcpp'
+
+# Vertically split the window in step 1 into 2 panes.
+# The second pane tails the dates file.
+tmux split-window -d -t stuff:text-to-file -c 'ncmpcpp'
+
+# Create second window called "monitor" running top.
+tmux new-window -d -a -t stuff:text-to-file -n monitor 'top'
+
+# Horizontally split the window in step 3 into 2 panes.
+# The second pane is watching the /tmp folder for changes.
+tmux split-window -d -t stuff:monitor -c /tmp -h 'watch -n3 ls -la'

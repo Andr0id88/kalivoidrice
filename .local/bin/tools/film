@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd ~/Videos
+mpv "$(ls -R | grep -E 'mkv|mp4|webm' | dmenu -l 30)"
+

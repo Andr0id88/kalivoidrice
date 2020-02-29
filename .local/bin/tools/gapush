@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#######################################################################
+#                                Author                               #
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				                                  #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	                #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /                  #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /                   #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \                  #
+#		   \/    \/              \/\/           \/                        #
+#                                                                     #
+#######################################################################
+#                             Created:02/14/20                        #
+#######################################################################
+
+
+#Description:
+# Push all git repos from my git repo folders and my dotfiles bare repo
+
+
+#######################################################################
+#                              DOTFILES                               #
+#######################################################################
+
+# My dotfile alias to my git bare repo
+dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+
+
+# Super ugly but it is needed to look for new untracked files in these locations or after a fresh install using karbs
+$dotfiles add ~/.config/getkeys/* ~/.config/htop ~/.config/i3/config ~/.config/i3blocks/config ~/.config/mpd/mpd.conf ~/.config/mpv/input.conf ~/.config/nvim/init.vim ~/.config/nvim/UltiSnips/* ~/.config/ranger/* ~/.config/surfraw/* ~/.config/vifm/* ~/.config/zathura/zathurarc ~/.config/aliasrc ~/.config/bmdirs ~/.config/bmdirs ~/.config/shortcutrc ~/.local/bin/* ~/.bash_profile ~/.bashrc ~/.inputrc ~/.profile ~/.tmux.conf ~/.vimrc ~/.xinitrc ~/.zprofile ~/.config/sxhkd/sxhkdrc ~/.config/dunst/dunstrc ~/.config/sxiv/"exec"/key-handler ~/.config/newsboat/config ~/.config/newsboat/urls ~/.config/mimeapps.list
+
+
+# Function to run on all my dotfiles
+dcp() {
+    $dotfiles add -u
+    $dotfiles commit -a -m "Uploaded by script, no commit msg added"
+    $dotfiles push
+}
+dcp
+
+
+#######################################################################
+#                              GIT REPOS                              #
+#######################################################################
+
+# Location of the git folder collection
+mygitfolder=$HOME/github/myrepos
+
+# Loop through all folders and place them in an array
+git_folders=()
+while IFS= read -r line; do
+    git_folders+=( "$line" )
+  done< <(ls ~/github/myrepos/)
+
+# Loop through the array and run the commands needed to automaticly push a repo to github,
+# git add, commit, push(IF commit executed sucsessfully meaning it was something to commit in that folder)
+for folder in "${git_folders[@]}"
+do
+   cd "$mygitfolder/$folder" || printf "%s is not a folder....skipping" "$folder"; printf "\n\nChecking the %s repo " "$folder"
+   git add .
+   git commit -a -m "Uploaded by script, no commit msg added"
+   if [[ $? -eq 0 ]]; then
+     git push
+   fi
+ done
+

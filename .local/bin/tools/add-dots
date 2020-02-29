@@ -1,0 +1,22 @@
+#!/bin/sh
+
+#######################################################################
+#                                Author                               #
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				      #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
+#		   \/    \/              \/\/           \/            #
+#                                                                     #
+#######################################################################
+#                             Created:01/29/20                        #
+#######################################################################
+
+#Description:
+# Script to automate setup of dotfiles from scratch on a new machine running.
+# Only tested for Arch but should work pretty much the same on other distros
+
+/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME add ~/.config/getkeys/* ~/.config/htop ~/.config/i3/config ~/.config/i3blocks/config ~/.config/mpd/mpd.conf ~/.config/mpv/input.conf ~/.config/nvim/init.vim ~/.config/nvim/UltiSnips/* ~/.config/ranger/* ~/.config/surfraw/* ~/.config/vifm/* ~/.config/zathura/zathurarc ~/.config/aliasrc ~/.config/bmdirs ~/.config/bmdirs ~/.config/shortcutrc ~/.local/bin/* ~/.bash_profile ~/.bashrc ~/.inputrc ~/.profile ~/.tmux.conf ~/.vimrc ~/.xinitrc ~/.zprofile ~/.config/sxhkd/sxhkdrc ~/.config/dunst/dunstrc ~/.config/sxiv/"exec"/key-handler ~/.config/newsboat/config ~/.config/newsboat/urls ~/.config/mimeapps.list

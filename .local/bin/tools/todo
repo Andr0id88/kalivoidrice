@@ -1,0 +1,4 @@
+TODO:
+- Create a script that takes input from allrepos and git clones every single repo. Or make the user able to choose what repo he wants to DL from a list (best way)
+- Fix up the script that add dotfile location to also include creating my correct folder structure so that all the shortcuts will actually work straight of the bat without much mkdir commands on a freshly installed computer.
+- Make a script that takes the all the pkglists and puts them into my KARBS auto installer script automaticly with the correct tags.

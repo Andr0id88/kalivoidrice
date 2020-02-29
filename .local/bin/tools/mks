@@ -1,0 +1,48 @@
+#!/bin/bash
+#Author:
+# ____  __.      .__  .__
+#|    |/ _|____  |  | |__|__  ______.__.________
+#|      < \__  \ |  | |  \  \/  <   |  |\___   /
+#|    |  \ / __ \|  |_|  |>    < \___  | /    /
+#|____|__ (____  /____/__/__/\_ \/ ____|/_____ \
+#        \/    \/              \/\/           \/
+#Created:on. 15. jan. 12:31:36 +0100 2020
+
+# Description:
+# Automaticly creates a script layout and uses chmod +x to make it executable,
+# if the file allready exsist the file will open in nvim on the last line in insert mode.
+# It will also add the script Automaticly to my dotfiles git bare repo for convenience.
+
+scriptdir=~/.local/bin/tools
+
+# Checks if the filename allready exsists.
+if [ -e $scriptdir/"$1" ]
+then
+nvim "+normal G$" +startinsert $scriptdir/"$1"
+else
+# Adds author, date, and description layout for the newly created script.
+echo -e "#!/bin/bash \n
+#######################################################################
+#                                Author                               #
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				      #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
+#		   \/    \/              \/\/           \/            #
+#                                                                     #
+#######################################################################
+#                             Created:$(date +%D)                     #
+#######################################################################
+
+#Description:
+" >> $scriptdir/"$1"
+# Make the script executable
+sudo chmod +x ~/.local/bin/tools/"$1"
+# Adds script to my git bare repo (dotfiles)
+/usr/bin/git --git-dir="$HOME"/.cfg/ --work-tree="$HOME" add ~/.local/bin/tools
+# Opens the script in nvim at the end in insert mode
+nvim + "+normal G$A" +startinsert $scriptdir/"$1"
+fi

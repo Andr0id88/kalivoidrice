@@ -1,0 +1,69 @@
+#!/bin/bash
+
+#######################################################################
+#                                Author                               #
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				      #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
+#		   \/    \/              \/\/           \/            #
+#                                                                     #
+#######################################################################
+#                             Created:02/12/20                     # #######################################################################
+
+#Description:
+# My own tool to easily control VM's from the CLI
+
+centerQ(){
+  textsize=${#1}
+  width=$(tput cols)
+  span=$((($width + $textsize) / 2))
+  printf "%${span}s\n" "$1"
+}
+
+
+centerQ "#######################################################################"
+centerQ "#                  Lazy script for VirtualBox                         #"
+centerQ "#                       Made by Kalixyz                               #"
+centerQ "#######################################################################"
+
+
+# Stores all currently installed VMs into an array
+my_vms=()
+while IFS= read -r line; do
+  my_vms+=( "$line" )
+done< <(VBoxManage list vms | cut -d '"' -f2)
+
+
+printf "\n1. Start VM\n2. Stop VM\n\n"
+read -p "What do you want to do?" choice
+
+if [ "$choice" -eq 1 ]
+then
+  clear
+centerQ "##################################################"
+centerQ "#  Choose the Virtual Machine you want to start  #"
+centerQ "##################################################"
+printf "\n\n"
+
+select vm in "${my_vms[@]}"
+  do
+    VBoxManage startvm "$vm" --type gui
+  done
+
+elif [ "$choice" -eq 2 ]
+then
+  clear
+centerQ "##################################################"
+centerQ "#  Choose the Virtual Machine you want to stop   #"
+centerQ "##################################################"
+printf "\n\n"
+
+  select vm in "${my_vms[@]}"
+  do
+    VBoxManage controlvm "$vm" poweroff
+  done
+fi

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#######################################################################
+#                                Author                               #
+#######################################################################
+#                                                                     #
+#	    ____  __.      .__  .__				      #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
+#		   \/    \/              \/\/           \/            #
+#                                                                     #
+#######################################################################
+#                             Created:02/07/20                     #
+#######################################################################
+
+#Description:
+# Creates a dummy file to test out diffrent SED commands and scripts.
+
+DEST=$1
+
+if [ $# -ne 1 ]; then
+  for i in {1..100}; do echo -e "This is line number$i of this junk testfile" >> $PWD/testfile; done
+  echo "No arrgument passed creating file in $PWD/testfile"
+  echo "Another way to use this script is: $0 destination/path"
+else
+  for i in {1..100}; do echo -e "This is line number$1 of this junk testfile" >> $DEST/testfile; done
+fi
+
+if [ $? -eq 0 ]; then
+  echo File created succsefully...
+else
+  echo Something went wrong...
+fi
