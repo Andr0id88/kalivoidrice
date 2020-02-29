@@ -1,0 +1,30 @@
+-----------------------------------------------------------------------
+-                         Basic Vim Commands                          -
+-----------------------------------------------------------------------
+
+    Vim commands are divided into nouns, verbs and modifiers.
+    Editing is performed by combining them.
+
+And this is what gives vim the power. To ilustrate the point, here are some most used commands:
+
+    Nouns: W - word, S - sentence, B- block, quotes and braces.
+    Verbs: C - change, I - insert, V - visual, D - delete
+    Modifiers: inside, around, till
+
+And to ilustrate how you can mix them:
+
+    Want to change a word? cw
+    Same, but cursor in the middle of the word? caw
+    Change text inside quotes? ci"
+    change quotes? ca"
+    Delete function body? di{
+    Delete up till first comma? dt,
+    Delete up till second comma? d2t,
+    Jump to first comma? t,
+    Select word? viw
+
+Also notice how all commands nicely translate into natural language:
+
+    Delete Word
+    Change Inside {
+

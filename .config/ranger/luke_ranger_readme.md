@@ -40,7 +40,7 @@ Press any "verb" followed by any "argument" to perform a folder operation. "gd" 
 ## Many little additions!
 
 + Basic additions:
-	+ V -- Make a new file and edit it in vim
+	+ V -- Make a new file and edit it in nvim
 	+ cW -- rename *all* selected files, editing in your text editor
 	+ mkd -- Make a directory/folder
 	+ sc -- Makes a link/shortcut (ln -sT)

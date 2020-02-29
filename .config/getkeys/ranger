@@ -1,0 +1,93 @@
+ _ __ __ _ _ __   __ _  ___ _ __
+| '__/ _` | '_ \ / _` |/ _ \ '__|
+| | | (_| | | | | (_| |  __/ |
+|_|  \__,_|_| |_|\__, |\___|_|
+                 |___/
+
+ranger is the file manager.
++ Basic:
+	j/k - Down/up
+	h - Left/higher in directory structure
+	l - Right/open/lower in directory structure
+	gg - Go to top
+	G - Go to bottom
+	cw - Rename file
+	I - Rename file, with cursor at beginning
+	A - Rename file, with cursor at end
+	aa - Rename file, with cursor right before extension
+	mkd - Make directory
+	bg - Change background/wallpaper to selected file
+	X - Extract archive
+	Z - Compress into tar.gz
+	Space - Highlight/select file
+	va - Highlight/(de)select all
+	vs - Toggle visual selection mode
+	uv - Deselect all
+	dd - Cut file(s)
+	yy - Yank/copy file(s)
+	pp - Paste cut/copied file(s)
+	po - Paste cut/copied file(s), overwriting originals
+	cW - Rename all selected files in text editor
+	D - Delete file(s) (press enter to confirm)
+	dD - Delete file(s) (press enter to confirm)
+	q - Quit
+	Q - Immediate quit
+
++ Shortcuts:
+	ctrl-f - Fuzzy find (fzf)
+	ctrl-l - Search via mlocate
+
++ Verbs:
+	g - go or cd
+	t - new tab
+	m - move file
+	Y - yank or copy file
+	## The verbs can be use with arguments like these: ##
+	d -- "~/Documents"
+	D -- "~/Downloads"
+	cf -- "~/.config"
+	And many others, including those you add to `~/.bmdirs`.
+
++ Basic additions:
+	V -- Make a new file and edit it in vim
+	cW -- rename *all* selected files, editing in your text editor
+	mkd -- Make a directory/folder
+	sc -- Makes a link/shortcut (ln -sT)
+	D -- delete selected file
+	X -- Extract a zip/rar/tar.gz, whatever. Runs a script that picks the right command for the right archive.
+	Z -- zips a folder up into a .tar.gz archive.
++ Document manipulation:
+	+ p1s -- print this file on the default printer, one-sided (lpr)
+	+ p2s -- print this file on the default printer, double-sided (lpr)
+	+ MP -- convert to a .pdf with pandoc (I use this to convert markdown, etc.)
+	+ MX -- compile selected document in XeLaTeX
+	+ ML -- compile selected document in LaTeX
+	+ TC -- clear all non-visible TeX build files in this directory
+	+ Txa -- copy article template to new file
+	+ Txs -- copy slideshow/beamer template to new file
+	+ Txh -- copy handout template to new file
++ Image commands:
+	+ bg -- (for i3 users) makes an image your background (assuming i3 is looking at ~/.config/wall.png for your background)
+	+ bw -- runs Pywal on the selected image, making it your background and generating a color scheme based off of it.
+	+ C -- rotates an image (requires imagemagick)
+	+ F -- flips an image (requires imagemagick)
+	+ TR -- add transparency to image file
++ mpd/mpc shortcuts
+	+ MS -- Start mpd
+	+ MK -- kill mpd
+	+ MN -- Start playing selected song/folder now
+	+ Ma -- Enqueue selected song/folder
+	+ Mp -- Pause
+	+ Mn -- Next track
+	+ Mb -- Previous track
+	+ Mo -- Restart track
++ Audio tagging with eye3D:
+	+ Ta -- change artist name
+	+ TA -- change album name
+	+ Tb -- change album artist
+	+ Tt -- change title
+	+ Tn -- change track number
++ Downloading:
+	+ ytv -- Download online video (paste in url) (requires youtube-dl)
+	+ yta -- Download audio of online video (paste in url) (requires youtube-dl)
+

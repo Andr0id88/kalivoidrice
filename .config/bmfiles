@@ -2,7 +2,7 @@ bf	~/.config/bmfiles
 bd	~/.config/bmdirs
 cfb	~/.bashrc
 cfa	~/.config/aliasrc
-cfz	~/.zshrc
+cfz	~/.config/zsh/.zshrc
 cfv	~/.config/nvim/init.vim
 cfi	~/.config/i3/config
 cfm	~/.config/mutt/muttrc
@@ -17,4 +17,3 @@ er	~/Documents/referbib
 cfB	~/.config/i3blocks/config
 cfk	~/.config/sxhkd/sxhkdrc
 cfs 	~/.config/surfraw/bookmarks
-

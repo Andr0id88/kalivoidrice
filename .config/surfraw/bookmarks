@@ -17,7 +17,6 @@ nf			https://www.netflix.com
 imdb			https://www.imdb.com
 rt			https://www.rt.com/on-air/
 ted			https://www.ted.com/talks
-ync			https://www.theync.com
 rdf			https://www.reddit.com/r/Funny/
 9gag			https://www.9gag.com
 jokes			jokes.cc.com
@@ -43,4 +42,7 @@ cmdfu			https://www.commandlinefu.com
 dockeralias		https://hackernoon.com/handy-docker-aliases-4bd85089a3b8
 hackernoon		https://hackernoon.com/
 medium			https://medium.com/topics
-
+tutorialpoint		https://www.tutorialspoint.com/index.htm
+kalitut			https://kalitutorials.net
+techdiff    https://techdifferences.com/category/networking
+linoxide    https://linoxide.com/

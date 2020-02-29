@@ -1,15 +1,14 @@
 #!/bin/sh
 
-#######################################################################
-#                                                                     #
-#	    ____  __.      .__  .__				      #
-#	   |    |/ _|____  |  | |__|__  ______.__.________	      #
-#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /            #
-#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /             #
-#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \            #
-#		   \/    \/              \/\/           \/            #
-#                                                                     #
-#######################################################################
+#########################################################################
+#                                                                       #
+#	    ____  __.      .__  .__				                                    #
+#	   |    |/ _|____  |  | |__|__  ______.__.________	                  #
+#	   |      < \__  \ |  | |  \  \/  <   |  |\___   /                    #
+#	   |    |  \ / __ \|  |_|  |>    < \___  | /    /                     #
+#	   |____|__ (____  /____/__/__/\_ \/ ____|/_____ \                    #
+#		   \/    \/              \/\/           \/                          #
+#########################################################################
 
 
 #######################################################################
@@ -22,20 +21,23 @@ alias ka="killall" \
 	SS="sudo systemctl" \
 	f="vifm" \
 	g="git" \
-	trem="transmission-remote" \
+	trc="transmission-remote-cli" \
 	e="$EDITOR" \
 	v="$EDITOR" \
+	vim="$EDITOR"\
 	x="sxiv -ft *" \
 	sdn="sudo shutdown -h now" \
 	gua="git remote | xargs -L1 git push --all" \
 	ls="ls -hN --color=auto --group-directories-first" \
+	la="ls -a --color=auto --group-directories-first" \
+	ll="ls -la --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
 	yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'" \
 	yta="yt -x -f bestaudio/best" \
 	YT="youtube-viewer" \
-	ref="shortcuts >/dev/null; source ~/.shortcuts" \
+	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
 	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
 	lsp="pacman -Qett --color=always | less" \
 	gallery="python /usr/lib/python3.7/site-packages/gallery_get.py" \
@@ -43,16 +45,28 @@ alias ka="killall" \
 	perm='stat -c "%a %n" *' \
 	webserver="python -m http.server 8080" \
 	starwars="telnet towel.blinkenlights.nl" \
-	dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
+	dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME" \
 	gs="git status"\
 	ga="git add ." \
 	gc="git commit -m" \
 	gp="git push" \
-	ds="dotfiles status" \
 	da="dotfiles add" \
-	dc="dotfiles commit -m" \
+	dc="dotfiles commit -m "$*"" \
 	dp="dotfiles push" \
-	du="du -d1 -h" #max depth, human readable
+	ds="dotfiles status" \
+	updots="dotfiles pull --rebase" \
+	dotslist="dotfiles ls-tree --full-tree -r HEAD >> ~/github/tracked_dotfiles" \
+	du="du -d1 -h" \
+	backup="sudo timeshift --create" \
+	pkglist="pacman -Qneq > ~/.pkglist.txt" \
+	aurlist="pacman -Qmeq > ~/.aurlist.txt" \
+	piplist="pip freeze > ~/.piplist.txt" \
+	rld-i3="i3-msg reload" \
+	rld-zsh="source ~/.config/zsh/.zshrc" \
+	rld-short="shortcuts >/dev/null; source ~/.config/shortcutrc" \
+	rld-bash="source ~/.bashrc" \
+	tmux='TERM=screen-256color tmux'
+
 
 #######################################################################
 #                          Special keybinds                           #
@@ -61,12 +75,12 @@ alias ka="killall" \
 # print previous command but only the first nth arguments
 # Alt+1, Alt+2 ...etc
 # http://www.softpanorama.org/Scripting/Shellorama/bash_command_history_reuse.shtml#Bang_commands
-bind '"\e1": "!:0 \n"'
-bind '"\e2": "!:0-1 \n"'
-bind '"\e3": "!:0-2 \n"'
-bind '"\e4": "!:0-3 \n"'
-bind '"\e5": "!:0-4 \n"'
-bind '"\e`": "!:0- \n"'     # all but the last word
+# bind '"\e1": "!:0 \n"'
+# bind '"\e2": "!:0-1 \n"'
+# bind '"\e3": "!:0-2 \n"'
+# bind '"\e4": "!:0-3 \n"'
+# bind '"\e5": "!:0-4 \n"'
+# bind '"\e`": "!:0- \n"'     # all but the last word
 
 
 #######################################################################
@@ -76,13 +90,13 @@ bind '"\e`": "!:0- \n"'     # all but the last word
 fh() {
 eval $(history | fzf +s | sed 's/ *[0-9]* *//')
 }
-bind '"\C-F":"fh\n"'	# fzf history ctrl + f hotkey
+# bind '"\C-F":"fh\n"'	# fzf history ctrl + f hotkey
 
 #Looks for articles in sci-hub and downloades them.
 shdl() { curl -O $(curl -s http://sci-hub.tw/"$@" | grep location.href | grep -o http.*pdf) ;}
 
 #se is to search for scripts or config files, opens them up in default editor(nvim)
-se() { du -a ~/.scripts/* ~/.config/* | awk '{print $2}' | fzf | xargs  -r $EDITOR ;}
+se() { du -a ~/.local/bin/* ~/.config/* | awk '{print $2}' | fzf | xargs  -r $EDITOR ;}
 
 sv() { vcopy "$(du -a ~/.scripts/* ~/.config/* | awk '{print $2}' | fzf)" ;}
 
@@ -110,4 +124,49 @@ fd() {
 #Search for songs on youtube, only play audio
 yl() { youtube-viewer -n $@ ;}
 
-rld-bashrc() { source ~/.bashrc ;} # Reload bashrc
+# rld-bashrc() { source ~/.bashrc ;} # Reload bashrc
+
+# cd() { builtin cd "$@" && ls; }
+
+# mkcd () {
+#   mkdir -p "$1"
+#   cd "$1"
+# }
+
+# Source all configs
+function rld-all(){
+source ~/.bashrc
+source ~/.config/zsh/.zshrc
+shortcuts >/dev/null; source ~/.config/shortcutrc
+i3-msg reload
+}
+
+function gcp() {
+commit_msg="$*"
+    git add .
+if [ -z "$commit_msg" ]
+  then
+    git commit -a -m "Uploaded by script, no commit msg added"
+else
+    git commit -a -m $commit_msg
+fi
+    git push
+}
+
+function dcp() {
+commit_msg="$*"
+    dotfiles add -u
+if [ -z "$commit_msg" ]
+  then
+    dotfiles commit -a -m "Uploaded by script, no commit msg added"
+else
+    dotfiles commit -a -m $commit_msg
+fi
+    dotfiles push
+}
+# Function to write out all installed packages from AUR,PIP and pacman
+function allpkgs(){
+	pacman -Qneq > ~/Documents/pkglist/pkglist.txt
+	pacman -Qmeq > ~/Documents/pkglist/aurlist.txt
+	pip freeze > ~/Documents/pkglist/piplist.txt
+}

@@ -1,4 +1,38 @@
-http://lukesmith.xyz/rss.xml
+http://lukesmith.xyz/rss.xml "Luke Smith"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "Luke Smith"
+
 https://notrelated.libsyn.com/rss
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith (YouTube)"
-https://www.archlinux.org/feeds/news/ "tech"
+
+https://www.archlinux.org/feeds/news/ "Arch Offical"
+
+https://www.youtube.com/feeds/videos.xml?user=JtheLinuxguy "YouTube Tutorials"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCvA_wgsX6eFAOXI8Rbg_WiQ "YouTube Tutorials"
+
+https://www.cyberciti.biz/feed "Linux Tutorials"
+https://www.tecmint.com/feed "Linux Tutorials"
+https://www.linuxacademy.com/blog/feed "Linux Tutorials"
+https://www.itsfoss.com/feed "Linux Tutorials"
+https://www.linuxhint.com/feed "Linux Tutorials"
+https://www.linoxide.com/feed "Linux Tutorials"
+
+https://www.reddit.com/r/linux/.rss "Reddit Linux"
+https://www.reddit.com/r/archlinux/.rss "Reddit Linux"
+
+https://www.linuxnix.com/feed/ "Linux Administration"
+https://www.linuxforfreshers.com/feeds/posts/default?alt=rss "Linux Administration"
+
+https://www.kali.org/feed "Pentesting"
+https://www.blackmoreops.com/feed "Pentesting"
+https://www.linuxsecurityblog.com/feed/ "Pentesting"
+https://www.kalitutorials.net/feeds/posts/default "Pentesting"
+https://www.nmmapper.com/blog/feeds "Pentesting"
+
+https://www.nrk.no/nordland/toppsaker.rss "Nyheter"
+https://www.nrk.no/nordland/siste.rss "Nyheter"
+https://www.nrk.no/tromsogfinnmark/toppsaker.rss "Nyheter"
+https://www.dagbladet.no/rss/oppdatert.xml "Nyheter"
+https://www.vg.no/export/Alle/rdf.hbs?kat=nyheter "Nyheter"
+
+https://feeds.feedburner.com/arstechnica/technology-lab "Ars Technica"
+https://feeds.feedburner.com/arstechnica/gadgets "Ars Technica"
+

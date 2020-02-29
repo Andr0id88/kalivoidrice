@@ -1,0 +1,62 @@
+-----------------------------------------------------------------------
+-                         ## Open programs ##                         -
+-----------------------------------------------------------------------
+
+f		# Open File Explorer
+e		# Short for editor, opens nvim
+v		# Short for editor, opens nvim
+magit		# Start nvim magit only
+calcurse	# Start Calcurse
+trem		# Short for transmission-remote
+
+-----------------------------------------------------------------------
+-                         ## System tools ##                          -
+-----------------------------------------------------------------------
+
+p		# Short for sudo pacman
+SS		# Short for sudo systemctl
+upc		# Update and upgrade
+lsp		# Show installed packages without dependencies
+ka		# Kill all prossesses with the name of $1
+mkd		# Short for mkdir -pv (parents and verbose)
+ref		# Refresh\update shortcuts in shortcutrc
+sdn		# Short for shutdown now
+ccat		# Cat command with syntax highlighting
+
+-----------------------------------------------------------------------
+-                             ## Misc ##                              -
+-----------------------------------------------------------------------
+
+x		# Show all pictures in a folder in thumbmail mode
+yt		# Download video with url as $1
+yta		# Download audio with url as $1
+YT		# View youtube videos from CLI
+ffmpeg		# Convert video\audio formats without showing banner
+mpv		# Start mpv with video url as $1
+
+-----------------------------------------------------------------------
+-                         ## Git commands ##                          -
+-----------------------------------------------------------------------
+
+g		# Short for git
+gs		# Show git status
+ga		# Git add with files as $1
+gc		# Git commit with commit message as $1
+gp		# Git push
+gac		# Add all git files and commit
+
+-----------------------------------------------------------------------
+-                           ## Functions ##                           -
+-----------------------------------------------------------------------
+
+fh 		# fzf history ctrl + h hotkey
+se		# Search for scripts or config files, opens them up in default editor(nvim)
+vf		# Find files and opens them in editor
+fp		# Find programming files and opens them in VIM
+fsr 		# Opens fzf in surfraw bookmark folder and opens the bookmark up in default browser
+fmv 		# Takes filename after command and opens fzf to search for output location
+fcp 		# Takes filename after command and opens fzf to search for output location
+shdl 		# Looks for articles in sci-hub and downloades them.
+fd 		# Cd to selected directory
+yl 		#Search for songs on youtube, only play audio
+

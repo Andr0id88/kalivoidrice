@@ -1,0 +1,14 @@
+-----------------------------------------------------------------------
+-                           Vim Commentary                            -
+-----------------------------------------------------------------------
+
+Comment out a single line:
+# gcc
+Comment out 5 lines:
+# 5gcc
+Comment out a paragraph:
+# gcap
+Comment out in visual mode(mark text):
+# gc
+Comment out adjecent lines that are commented:
+# gcgc
